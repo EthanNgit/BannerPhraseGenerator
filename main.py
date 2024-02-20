@@ -92,6 +92,10 @@ class GithubBannerGenerator:
         except:
             try:
                 self.ethan_git.ethan_github_repo.create_file(self.ethan_git.ethan_banner_path, "Python: " + self.phrase, content=content, branch="main")
+                
+                # Delete the filled banner PNG after it has been successfully updated on GitHub
+                os.remove("Images/filledGithubBanner.png")
+                print("Filled banner PNG deleted locally")
             except:
                 print("Banner failed to update: connection issue")
                 return
